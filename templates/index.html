@@ -1,0 +1,13 @@
+<h1>Divine Dicekeeper</h1>
+{% if session.user_id %}
+<p>Logged in as <b>{{ session.username }}</b> | <a href="/logout">Log out</a></p>
+{% else %}
+<form action="/login" method="POST">
+<p>Username:<br>
+<input type="text" name="username"></p>
+<p>Password:<br>
+<input type="password" name="password"></p>
+<input type="submit" value="Log in">
+</form>
+Not registered yet? <a href="/register">Sign up here!</a>
+{% endif %}
