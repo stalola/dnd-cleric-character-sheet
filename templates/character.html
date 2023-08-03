@@ -1,2 +1,6 @@
+{% extends "layout.html" %}
+{% block title %}Character sheet - {{ character.character_name }} {% endblock %}
+{% block content %}
 This page belongs to:
-{{ character }}
+{{ character.character_name }}
+{% endblock %}
