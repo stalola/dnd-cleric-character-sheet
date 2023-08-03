@@ -7,7 +7,8 @@ This app helps you keep track of your clerics ability scores, hit points, attack
 ## Features:
 
 - [x] user can log in and out and create a new user
-- [ ] user can create a new D&D character or control previously made characters
+- [x] user can create a new D&D character
+- [ ] user can edit previously made characters
 - [ ] characters have attributes, such as:  
    character name  
    ability scores (Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma)  
