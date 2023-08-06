@@ -1,6 +1,16 @@
 {% extends "layout.html" %}
 {% block title %}Character sheet - {{ character.character_name }} {% endblock %}
 {% block content %}
-This page belongs to:
-{{ character.character_name }}
+<h2>{{ character.character_name }}</h2>
+<p>
+    Level {{ character.level }} {{ character.race }} cleric
+</p>
+<p>
+    Strength: {{ character.strength }} <br>
+    Dexterity: {{ character.dexterity }} <br>
+    Constitution: {{ character.constitution }} <br>
+    Intelligence: {{ character.intelligence }} <br>
+    Wisdom: {{ character.wisdom }} <br>
+    Charisma: {{ character.charisma }} <br>
+</p>
 {% endblock %}

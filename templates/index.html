@@ -3,12 +3,12 @@
 
 {% block content %}
 {% if session.user_id %}
-<a href="/new_character">Create a new character</a>
+<p><a href="/new_character">> Create a new character</a>
+</p>
 <ul>
-{% for character in chars %}
-<li> <a href="/character/{{ character.char_id }}">{{ character.character_name }}</a>
-{% endfor %}
+    {% for character in chars %}
+    <li> <a href="/character/{{ character.char_id }}">{{ character.character_name }}</a>
+        {% endfor %}
 </ul>
 {% endif %}
 {% endblock %}
-

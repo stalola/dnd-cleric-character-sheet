@@ -3,26 +3,47 @@
 {% block content %}
 <h2>Create a new character</h2>
 <form action="/new_character" method="post">
-character name: <input type="text" name="character_name">
-<p>
-speed: <input type="text" name="speed">
-<p>
-race: <input type="text" name="race">
-<p>
-level: <input type="text" name="level">
-<p>
-wisdom: <input type="text" name="wisdom">
-<p>
-strength: <input type="text" name="strength">
-<p>
-charisma: <input type="text" name="charisma">
-<p>
-dexterity: <input type="text" name="dexterity">
-<p>
-constitution: <input type="text" name="constitution">
-<p>
-intelligence: <input type="text" name="intelligence">
-<p>                                                                                                                                                                                                                                                                        
-<input type="submit" value="Submit">
+    <p>
+        <label for="character_name">Character name: </label>
+        <input type="text" name="character_name">
+    </p>
+    <p>
+        <label for="speed">Speed: </label>
+        <input type="text" name="speed" value="25">
+    </p>
+    <p>
+        <label for="race">Race: </label>
+        <input type="text" name="race" value="Human">
+    </p>
+    <p>
+        <label for="level">Level: </label>
+        <input type="text" name="level" value="1">
+    </p>
+    <p>
+        <label for="wisdom">Wisdom: </label>
+        <input type="text" name="wisdom" value="10">
+    </p>
+    <p>
+        <label for="strength">Strength: </label>
+        <input type="text" name="strength" value="10">
+    </p>
+    <p>
+        <label for="charisma">Charisma: </label>
+        <input type="text" name="charisma" value="10">
+    </p>
+    <p>
+        <label for="dexterity">Dexterity: </label>
+        <input type="text" name="dexterity" value="10">
+    </p>
+    <p>
+        <label for="constitution">Constitution: </label>
+        <input type="text" name="constitution" value="10">
+    </p>
+    <p>
+        <label for="intelligence">Intelligence: </label>
+        <input type="text" name="intelligence" value="10">
+    </p>
+    <p>
+        <input type="submit" value="Submit">
 </form>
 {% endblock %}
