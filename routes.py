@@ -1,5 +1,5 @@
-from app import app
 from flask import render_template, request, redirect
+from app import app
 import users
 import characters
 
@@ -14,8 +14,7 @@ def login():
     password = request.form["password"]
     if users.login(username, password):
         return redirect("/")
-    else:
-        return render_template("error.html", message="Wrong username or password")
+    return render_template("error.html", message="Wrong username or password")
 
 @app.route("/logout")
 def logout():
@@ -34,8 +33,7 @@ def register():
             return render_template("error.html", message="Passwords differ")
         if users.register(username, password1):
             return redirect("/")
-        else:
-            return render_template("error.html", message="Registration failed")
+        return render_template("error.html", message="Registration failed")
 
 @app.route("/new_character", methods=["GET", "POST"])
 def new_character():
@@ -52,12 +50,12 @@ def new_character():
         dexterity = request.form["dexterity"]
         constitution = request.form["constitution"]
         intelligence = request.form["intelligence"]
-        if characters.update(character_name, speed, race, level, wisdom, strength, charisma, dexterity, constitution, intelligence):
+        if characters.update(character_name, speed, race, level, wisdom, strength, charisma,
+                             dexterity, constitution, intelligence):
             return redirect("/")
-        else:
-            return render_template("error.html", message="Updating failed")
+        return render_template("error.html", message="Updating failed")
 
-@app.route("/character/<int:id>")
-def page(id):
-    character = characters.character_sheet(id)
+@app.route("/character/<int:char_id>")
+def page(char_id):
+    character = characters.character_sheet(char_id)
     return render_template("character.html", character=character)

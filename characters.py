@@ -1,8 +1,9 @@
-from db import db
 from sqlalchemy.sql import text
+from db import db
 import users
 
-def update(character_name, speed, race, level, wisdom, strength, charisma, dexterity, constitution, intelligence):
+def update(character_name, speed, race, level, wisdom, strength, charisma, dexterity, constitution,
+           intelligence):
     user_id = users.user_id()
     if user_id == 0:
         return False
@@ -10,7 +11,11 @@ def update(character_name, speed, race, level, wisdom, strength, charisma, dexte
           "strength, dexterity, constitution, intelligence, wisdom, charisma) " \
           "VALUES (:user_id, :character_name, :speed, :race, :level, :strength, :dexterity, " \
           ":constitution, :intelligence, :wisdom, :charisma)"
-    db.session.execute(text(sql), {"user_id":user_id, "character_name":character_name, "speed":speed, "race":race, "level":level, "strength":strength, "dexterity":dexterity, "constitution":constitution, "intelligence":intelligence, "wisdom":wisdom, "charisma":charisma})
+    db.session.execute(text(sql), {"user_id":user_id, "character_name":character_name,
+                                   "speed":speed, "race":race, "level":level, "strength":strength,
+                                   "dexterity":dexterity, "constitution":constitution,
+                                   "intelligence":intelligence, "wisdom":wisdom,
+                                   "charisma":charisma})
     db.session.commit()
     return True
 
@@ -23,8 +28,7 @@ def get_characters():
     result = db.session.execute(text(sql), {"user_id":user_id})
     return result.fetchall()
 
-def character_sheet(id):
+def character_sheet(char_id):
     sql = "SELECT * FROM characters C WHERE C.id=:id"
-    result = db.session.execute(text(sql), {"id":id})
+    result = db.session.execute(text(sql), {"id":char_id})
     return result.fetchone()
-    
