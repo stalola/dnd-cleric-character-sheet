@@ -3,7 +3,7 @@
 
 {% block content %}
 {% if session.user_id %}
-<p><a href="/new_character">> Create a new character</a>
+<p><a href="/new_character"> Create a new character</a>
 </p>
 <ul>
     {% for character in chars %}
@@ -15,9 +15,9 @@
 
 <form action="/login" method="POST">
     <p>Username:<br>
-        <input type="text" name="username"></p>
+        <input type="text" name="username" required></p>
         <p>Password:<br>
-        <input type="password" name="password"></p>
+        <input type="password" name="password" required></p>
     <input type="submit" value="Log in">
 </form>
 <p>

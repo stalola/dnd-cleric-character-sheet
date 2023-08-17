@@ -5,43 +5,43 @@
 <form action="/new_character" method="post">
     <p>
         <label for="character_name">Character name: </label>
-        <input type="text" name="character_name">
+        <input type="text" name="character_name" required placeholder="e.g. Jane Smith" maxlength="51" autofocus>
     </p>
     <p>
-        <label for="speed">Speed: </label>
-        <input type="text" name="speed" value="25">
+        <label for="speed">Speed: (ft)</label>
+        <input type="number" name="speed" value="25" required min="0" max="90">
     </p>
     <p>
         <label for="race">Race: </label>
-        <input type="text" name="race" value="Human">
+        <input type="text" name="race" placeholder="e.g. Human" required>
     </p>
     <p>
         <label for="level">Level: </label>
-        <input type="text" name="level" value="1">
+        <input type="number" name="level" value="1" required min="1" max="20">
     </p>
     <p>
         <label for="wisdom">Wisdom: </label>
-        <input type="text" name="wisdom" value="10">
+        <input type="number" name="wisdom" value="10" required min="1" max="30">
     </p>
     <p>
         <label for="strength">Strength: </label>
-        <input type="text" name="strength" value="10">
+        <input type="number" name="strength" value="10" required min="1" max="30">
     </p>
     <p>
         <label for="charisma">Charisma: </label>
-        <input type="text" name="charisma" value="10">
+        <input type="number" name="charisma" value="10" required min="1" max="30">
     </p>
     <p>
         <label for="dexterity">Dexterity: </label>
-        <input type="text" name="dexterity" value="10">
+        <input type="number" name="dexterity" value="10" required min="1" max="30">
     </p>
     <p>
         <label for="constitution">Constitution: </label>
-        <input type="text" name="constitution" value="10">
+        <input type="number" name="constitution" value="10" required min="1" max="30">
     </p>
     <p>
         <label for="intelligence">Intelligence: </label>
-        <input type="text" name="intelligence" value="10">
+        <input type="number" name="intelligence" value="10" required min="1" max="30">
     </p>
     <p>
         <input type="submit" value="Submit">
