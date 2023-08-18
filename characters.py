@@ -14,6 +14,19 @@ def create(character_name, speed, race, level, wisdom, strength, charisma, dexte
     db.session.commit()
     return True
 
+def update(char_id, speed, level, wisdom, strength, charisma, dexterity, constitution,
+           intelligence):
+    user_id = users.user_id()
+    if user_id == 0:
+        return False
+    sql = """UPDATE characters 
+    SET speed=:speed, level=:level, wisdom=:wisdom, strength=:strength, charisma=:charisma, dexterity=:dexterity, constitution=:constitution, intelligence=:intelligence
+    WHERE id=:id"""
+    db.session.execute(text(sql), {"id":char_id, "user_id":user_id, "speed":speed, "level":level, "strength":strength,
+                                   "dexterity":dexterity, "constitution":constitution, "intelligence":intelligence, "wisdom":wisdom, "charisma":charisma})
+    db.session.commit()
+    return True
+
 def get_characters():
     user_id = users.user_id()
     sql = """SELECT C.id AS char_id, C.user_id, C.character_name, C.speed, C.race, C.level, C.strength, C.dexterity, C.constitution, C.intelligence, C.wisdom, C.charisma, U.username 

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block title %}Edit character - {{ character.character_name }} {% endblock %}
+{% block content %}
+<h2>Editing {{ character.character_name }}</h2>
+<p>
+    {{ character.race }} cleric
+</p>
+
+<form action="/character/{{ character.id }}/edit" method="post">
+    <p>
+        <label for="speed">Speed: (ft)</label>
+        <input type="number" name="speed" value="{{ character.speed }}" required min="0" max="90">
+    </p>
+    <p>
+        <label for="level">Level: </label>
+        <input type="number" name="level" value="{{ character.level }}" required min="1" max="20">
+    </p>
+    <p>
+        <label for="wisdom">Wisdom: </label>
+        <input type="number" name="wisdom" value="{{ character.wisdom }}" required min="1" max="30">
+    </p>
+    <p>
+        <label for="strength">Strength: </label>
+        <input type="number" name="strength" value="{{ character.strength }}" required min="1" max="30">
+    </p>
+    <p>
+        <label for="charisma">Charisma: </label>
+        <input type="number" name="charisma" value="{{ character.charisma }}" required min="1" max="30">
+    </p>
+    <p>
+        <label for="dexterity">Dexterity: </label>
+        <input type="number" name="dexterity" value="{{ character.dexterity }}" required min="1" max="30">
+    </p>
+    <p>
+        <label for="constitution">Constitution: </label>
+        <input type="number" name="constitution" value="{{ character.constitution }}" required min="1" max="30">
+    </p>
+    <p>
+        <label for="intelligence">Intelligence: </label>
+        <input type="number" name="intelligence" value="{{ character.intelligence }}" required min="1" max="30">
+    </p>
+    <p>
+        <input type="reset">
+        <input type="submit" value="Submit">
+    </p>
+    <input type="hidden" name="character_id" value="{{ character.id }}">
+</form>
+
+{% endblock %}

@@ -10,11 +10,11 @@ You can test the app at [divine-dicekeeper.fly.dev](https://divine-dicekeeper.fl
 
 - [x] user can log in and out and create a new user
 - [x] user can create a new D&D character
-- [ ] user can edit previously made characters
-- [ ] characters have attributes, such as:  
-   character name  
-   ability scores (Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma)  
-   skills  
+- [x] user can edit previously made characters
+- [x] characters have attributes, such as:  
+   - character name  
+   - ability scores (Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma)  
+   - skills  
    saving throws  
    hit points (+ temporary hit points)  
    attacks and spellcasting  

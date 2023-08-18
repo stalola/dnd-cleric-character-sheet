@@ -53,9 +53,28 @@ def new_character():
         if characters.create(character_name, speed, race, level, wisdom, strength, charisma,
                              dexterity, constitution, intelligence):
             return redirect("/")
-        return render_template("error.html", message="Updating failed")
+        return render_template("error.html", message="Creating new character failed")
 
 @app.route("/character/<int:char_id>")
-def page(char_id):
+def character_page(char_id):
     character = characters.character_sheet(char_id)
     return render_template("character.html", character=character)
+
+@app.route("/character/<int:char_id>/edit", methods=["GET", "POST"])
+def edit(char_id):
+    if request.method == "GET":
+        character = characters.character_sheet(char_id)
+        return render_template("edit_character.html", character=character)
+    if request.method == "POST":
+        char_id = request.form["character_id"]
+        speed = request.form["speed"]
+        level = request.form["level"]
+        wisdom = request.form["wisdom"]
+        strength = request.form["strength"]
+        charisma = request.form["charisma"]
+        dexterity = request.form["dexterity"]
+        constitution = request.form["constitution"]
+        intelligence = request.form["intelligence"]
+        if characters.update(char_id, speed, level, wisdom, strength, charisma, dexterity, constitution, intelligence):
+            return redirect("/character/" + char_id)
+        return render_template("error.html", message="Updating failed")
