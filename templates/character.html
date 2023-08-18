@@ -6,11 +6,33 @@
     Level {{ character.level }} {{ character.race }} cleric
 </p>
 <p>
-    Strength: {{ character.strength }} <br>
-    Dexterity: {{ character.dexterity }} <br>
-    Constitution: {{ character.constitution }} <br>
-    Intelligence: {{ character.intelligence }} <br>
-    Wisdom: {{ character.wisdom }} <br>
-    Charisma: {{ character.charisma }} <br>
+    Strength: {{ character.strength }} ({{ (character.strength - 10)//2 }}) <br>
+    Dexterity: {{ character.dexterity }} ({{ (character.dexterity - 10)//2 }}) <br>
+    Constitution: {{ character.constitution }} ({{ (character.constitution - 10)//2 }}) <br>
+    Intelligence: {{ character.intelligence }} ({{ (character.intelligence - 10)//2 }}) <br>
+    Wisdom: {{ character.wisdom }} ({{ (character.wisdom - 10)//2 }}) <br>
+    Charisma: {{ character.charisma }} ({{ (character.charisma - 10)//2 }}) <br>
+</p>
+
+<p>
+    Skills:<br>
+    Acrobatics (Dex) {{ character.acrobatics }} <br>
+    Animal Handling (Wis) {{ character.animal_handling }} <br>
+    Arcana (Int) {{ character.arcana }} <br>
+    Athletics (Str) {{ character.athletics }} <br>
+    Deception (Cha) {{ character.deception }} <br>
+    History (Int) {{ character.history }} <br>
+    Insight (Wis) {{ character.insight }} <br>
+    Intimidation (Cha) {{ character.intimidation }} <br>
+    Investigation (Int) {{ character.investigation }} <br>
+    Medicine (Wis) {{ character.medicine }} <br>
+    Nature (Int) {{ character.nature }} <br>
+    Perception (Wis) {{ character.perception }} <br>
+    Performance (Cha) {{ character.performance }} <br>
+    Persuasion (Cha) {{ character.persuasion }} <br>
+    Religion (Int) {{ character.religion }} <br>
+    Sleight of Hand (Dex) {{ character.sleight_of_hand }} <br>
+    Stealth (Dex) {{ character.stealth }} <br>
+    Survival (Wis) {{ character.survival }} <br>
 </p>
 {% endblock %}

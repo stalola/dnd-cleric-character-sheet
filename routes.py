@@ -50,7 +50,7 @@ def new_character():
         dexterity = request.form["dexterity"]
         constitution = request.form["constitution"]
         intelligence = request.form["intelligence"]
-        if characters.update(character_name, speed, race, level, wisdom, strength, charisma,
+        if characters.create(character_name, speed, race, level, wisdom, strength, charisma,
                              dexterity, constitution, intelligence):
             return redirect("/")
         return render_template("error.html", message="Updating failed")
