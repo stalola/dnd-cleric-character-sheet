@@ -5,7 +5,7 @@
 <p>
     Level {{ character.level }} {{ character.race }} cleric
 </p>
-<p>
+<p style="line-height: 1.5">
     Strength: {{ character.strength }} ({{ (character.strength - 10)//2 }}) <br>
     Dexterity: {{ character.dexterity }} ({{ (character.dexterity - 10)//2 }}) <br>
     Constitution: {{ character.constitution }} ({{ (character.constitution - 10)//2 }}) <br>
@@ -14,25 +14,25 @@
     Charisma: {{ character.charisma }} ({{ (character.charisma - 10)//2 }}) <br>
 </p>
 
-<p>
+<p style="line-height: 1.2; font-size: medium;">
     Skills:<br>
-    Acrobatics (Dex) {{ character.acrobatics }} <br>
-    Animal Handling (Wis) {{ character.animal_handling }} <br>
-    Arcana (Int) {{ character.arcana }} <br>
-    Athletics (Str) {{ character.athletics }} <br>
-    Deception (Cha) {{ character.deception }} <br>
-    History (Int) {{ character.history }} <br>
-    Insight (Wis) {{ character.insight }} <br>
-    Intimidation (Cha) {{ character.intimidation }} <br>
-    Investigation (Int) {{ character.investigation }} <br>
-    Medicine (Wis) {{ character.medicine }} <br>
-    Nature (Int) {{ character.nature }} <br>
-    Perception (Wis) {{ character.perception }} <br>
-    Performance (Cha) {{ character.performance }} <br>
-    Persuasion (Cha) {{ character.persuasion }} <br>
-    Religion (Int) {{ character.religion }} <br>
-    Sleight of Hand (Dex) {{ character.sleight_of_hand }} <br>
-    Stealth (Dex) {{ character.stealth }} <br>
-    Survival (Wis) {{ character.survival }} <br>
+    Acrobatics <min>(Dex)</min> {{ character.acrobatics }} <br>
+    Animal Handling <min>(Wis)</min> {{ character.animal_handling }} <br>
+    Arcana <min>(Int)</min> {{ character.arcana }} <br>
+    Athletics <min>(Str)</min> {{ character.athletics }} <br>
+    Deception <min>(Cha)</min> {{ character.deception }} <br>
+    History <min>(Int)</min> {{ character.history }} <br>
+    Insight <min>(Wis)</min> {{ character.insight }} <br>
+    Intimidation <min>(Cha)</min> {{ character.intimidation }} <br>
+    Investigation <min>(Int)</min> {{ character.investigation }} <br>
+    Medicine <min>(Wis)</min> {{ character.medicine }} <br>
+    Nature <min>(Int)</min> {{ character.nature }} <br>
+    Perception <min>(Wis)</min> {{ character.perception }} <br>
+    Performance <min>(Cha)</min> {{ character.performance }} <br>
+    Persuasion <min>(Cha)</min> {{ character.persuasion }} <br>
+    Religion <min>(Int)</min> {{ character.religion }} <br>
+    Sleight of Hand <min>(Dex)</min> {{ character.sleight_of_hand }} <br>
+    Stealth <min>(Dex)</min> {{ character.stealth }} <br>
+    Survival <min>(Wis)</min> {{ character.survival }} <br>
 </p>
 {% endblock %}
