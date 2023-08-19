@@ -4,10 +4,12 @@ import users
 import characters
 import spells
 
+
 @app.route("/")
 def index():
     chars = characters.get_characters()
     return render_template("index.html", chars=chars)
+
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -17,10 +19,12 @@ def login():
         return redirect("/")
     return render_template("error.html", message="Wrong username or password")
 
+
 @app.route("/logout")
 def logout():
     users.logout()
     return redirect("/")
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -35,6 +39,7 @@ def register():
         if users.register(username, password1):
             return redirect("/")
         return render_template("error.html", message="Registration failed")
+
 
 @app.route("/new_character", methods=["GET", "POST"])
 def new_character():
@@ -59,16 +64,18 @@ def new_character():
             return redirect("/")
         return render_template("error.html", message="Creating new character failed")
 
+
 @app.route("/character/<int:char_id>")
 def character_page(char_id):
     character = characters.character_sheet(char_id)
-    modifier = {"strength":characters.modifier(character.strength), "dexterity":
+    modifier = {"strength": characters.modifier(character.strength), "dexterity":
                 characters.modifier(character.dexterity), "constitution":
                 characters.modifier(character.constitution), "intelligence":
                 characters.modifier(character.intelligence), "wisdom":
                 characters.modifier(character.wisdom), "charisma":
                 characters.modifier(character.charisma)}
     return render_template("character.html", character=character, modifier=modifier)
+
 
 @app.route("/character/<int:char_id>/edit", methods=["GET", "POST"])
 def character_edit(char_id):
@@ -94,6 +101,31 @@ def character_edit(char_id):
                              constitution, intelligence):
             return redirect("/character/" + char_id)
         return render_template("error.html", message="Updating failed")
+
+
+@app.route("/add_spell", methods=["GET", "POST"])
+def new_spell():
+    if request.method == "GET":
+        allow = users.is_user()
+        if not allow:
+            return render_template("error.html", message="Not permitted")
+        return render_template("add_spell.html")
+    if request.method == "POST":
+        name = request.form["name"]
+        level = request.form["level"]
+        cast_time = request.form["cast_time"]
+        duration = request.form["duration"]
+        range_area = request.form["range_area"]
+        components = request.form["components"]
+        school = request.form["school"]
+        attack_save = request.form["attack_save"]
+        damage_effect = request.form["damage_effect"]
+        description = request.form["description"]
+        if spells.add_spell(name, level, cast_time, duration, range_area, components, school,
+                            attack_save, damage_effect, description):
+            return redirect("/")
+        return render_template("error.html", message="Adding new spell failed")
+
 
 @app.route("/spell/<int:spell_id>", methods=["GET"])
 def spell_page(spell_id):
