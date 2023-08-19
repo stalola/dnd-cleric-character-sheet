@@ -50,7 +50,6 @@ def character_sheet(char_id):
     result = db.session.execute(text(sql), {"id":char_id})
     return result.fetchone()
 
-# these should be put to use in character page
 def sign(number):
     if int(number) >= 0:
         return "+" + str(number)
