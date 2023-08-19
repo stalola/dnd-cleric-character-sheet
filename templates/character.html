@@ -36,8 +36,9 @@
     Survival <min>(Wis)</min> {{ character.survival }} <br>
 </p>
 
+{% if session.user_id == character.user_id %}
 <p>
     <a href="{{ character.id }}/edit">Edit character</a>
-
 </p>
+{% endif %}
 {% endblock %}

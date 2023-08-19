@@ -5,7 +5,7 @@ import users
 def create(character_name, speed, race, level, wisdom, strength, charisma, dexterity, constitution,
            intelligence):
     user_id = users.user_id()
-    if user_id == 0:
+    if not users.is_user():
         return False
     sql = """INSERT INTO characters(user_id, character_name, race, speed, level, strength,
     dexterity, constitution, intelligence, wisdom, charisma)
@@ -21,7 +21,7 @@ def create(character_name, speed, race, level, wisdom, strength, charisma, dexte
 def update(char_id, speed, level, wisdom, strength, charisma, dexterity, constitution,
            intelligence):
     user_id = users.user_id()
-    if user_id == 0:
+    if not users.is_user():
         return False
     sql = """UPDATE characters
     SET speed=:speed, level=:level, wisdom=:wisdom, strength=:strength, charisma=:charisma, 

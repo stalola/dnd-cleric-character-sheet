@@ -31,3 +31,8 @@ def register(username, password):
 
 def user_id():
     return session.get("user_id",0)
+
+def is_user():
+    if user_id() == 0:
+        return False
+    return True

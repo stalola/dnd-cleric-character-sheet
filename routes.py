@@ -38,6 +38,9 @@ def register():
 @app.route("/new_character", methods=["GET", "POST"])
 def new_character():
     if request.method == "GET":
+        allow = users.is_user()
+        if not allow:
+            return render_template("error.html", message="Not permitted")
         return render_template("new_character.html")
     if request.method == "POST":
         character_name = request.form["character_name"]
@@ -63,7 +66,12 @@ def character_page(char_id):
 @app.route("/character/<int:char_id>/edit", methods=["GET", "POST"])
 def edit(char_id):
     if request.method == "GET":
+        allow = False
         character = characters.character_sheet(char_id)
+        if users.user_id() == character.user_id:
+            allow = True
+        if not allow:
+            return render_template("error.html", message="Not permitted")
         return render_template("edit_character.html", character=character)
     if request.method == "POST":
         char_id = request.form["character_id"]
