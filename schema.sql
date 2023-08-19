@@ -36,3 +36,24 @@ sleight_of_hand INTEGER GENERATED ALWAYS AS ((dexterity - 10)/2) STORED,
 stealth INTEGER GENERATED ALWAYS AS ((dexterity - 10)/2) STORED,
 survival INTEGER GENERATED ALWAYS AS ((wisdom - 10)/2) STORED
 );
+
+CREATE TABLE spells (
+id SERIAL PRIMARY KEY,
+name TEXT,
+level INTEGER,
+cast_time TEXT, 
+duration TEXT, 
+range_area TEXT, 
+components TEXT, 
+school TEXT, 
+attack_save TEXT, 
+damage_effect TEXT, 
+description TEXT
+);
+
+CREATE TABLE spellbook (
+id SERIAL PRIMARY KEY,
+spell_id INTEGER REFERENCES spells,
+char_id INTEGER REFERENCES characters,
+prepared BOOL
+);
