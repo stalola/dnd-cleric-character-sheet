@@ -75,6 +75,7 @@ def edit(char_id):
         dexterity = request.form["dexterity"]
         constitution = request.form["constitution"]
         intelligence = request.form["intelligence"]
-        if characters.update(char_id, speed, level, wisdom, strength, charisma, dexterity, constitution, intelligence):
+        if characters.update(char_id, speed, level, wisdom, strength, charisma, dexterity,
+                             constitution, intelligence):
             return redirect("/character/" + char_id)
         return render_template("error.html", message="Updating failed")
