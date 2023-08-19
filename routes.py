@@ -61,7 +61,13 @@ def new_character():
 @app.route("/character/<int:char_id>")
 def character_page(char_id):
     character = characters.character_sheet(char_id)
-    return render_template("character.html", character=character)
+    modifier = {"strength":characters.modifier(character.strength), "dexterity":
+                characters.modifier(character.dexterity), "constitution":
+                characters.modifier(character.constitution), "intelligence":
+                characters.modifier(character.intelligence), "wisdom":
+                characters.modifier(character.wisdom), "charisma":
+                characters.modifier(character.charisma)}
+    return render_template("character.html", character=character, modifier=modifier)
 
 @app.route("/character/<int:char_id>/edit", methods=["GET", "POST"])
 def edit(char_id):
