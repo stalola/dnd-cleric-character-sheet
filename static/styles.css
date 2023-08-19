@@ -76,3 +76,19 @@ min {
     font-size: smaller;
     color: #4B4453;
 }
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, #B0A8B9, #201d24, #B0A8B9);
+}
+
+#login {
+    display: block;
+    float: right;
+    padding: .5em;
+    display: grid;
+    max-width: 15em;
+    grid-template-columns: 5em 10em;
+    grid-row-gap: .3em;
+}

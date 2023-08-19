@@ -12,17 +12,26 @@
 </ul>
 
 {% else %}
-
-<form action="/login" method="POST">
-    <p>Username:<br>
-        <input type="text" name="username" required></p>
-        <p>Password:<br>
-        <input type="password" name="password" required></p>
-    <input type="submit" value="Log in">
-</form>
 <p>
-    Not registered yet? <a href="/register">Sign up here!</a>
+<form id="login" action="/login" method="POST">
+    <label for="username">Username:</label>
+    <input type="text" name="username" required>
+    <label for="password">Password:</label>
+    <input type="password" name="password" required><br>
+    <input type="submit" value="Log in"><br>
+    <p>
+        Not registered yet? <a href="/register">Sign up here!</a>
+    </p>
+</form>
 </p>
-{% endif %}
+<p>
+    <i>
+        Embark on a journey of boundless faith and mystic might with the Divine Dicekeeper, the interactive character sheet designed exclusively for Dungeons and Dragons clerics. 
+    </i>
+</p>
+<p>
+    Uniting tradition with technology, this app redefines how you engage with your cleric's destiny, bringing an entire universe of divine power to your fingertips.
+</p>
 
+{% endif %}
 {% endblock %}
