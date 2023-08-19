@@ -2,6 +2,7 @@ from flask import render_template, request, redirect
 from app import app
 import users
 import characters
+import spells
 
 @app.route("/")
 def index():
@@ -70,7 +71,7 @@ def character_page(char_id):
     return render_template("character.html", character=character, modifier=modifier)
 
 @app.route("/character/<int:char_id>/edit", methods=["GET", "POST"])
-def edit(char_id):
+def character_edit(char_id):
     if request.method == "GET":
         allow = False
         character = characters.character_sheet(char_id)
@@ -93,3 +94,13 @@ def edit(char_id):
                              constitution, intelligence):
             return redirect("/character/" + char_id)
         return render_template("error.html", message="Updating failed")
+
+@app.route("/spell/<int:spell_id>", methods=["GET"])
+def spell_page(spell_id):
+    allow = users.is_user()
+    if not allow:
+        return render_template("error.html", message="Not permitted")
+    spell = spells.spellsheet(spell_id)
+    s_descr = spell.description
+    s_descr = s_descr.split('\n')
+    return render_template("spell.html", spell=spell, s_descr=s_descr)

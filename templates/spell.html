@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}Spell - {{ spell.name }} {% endblock %}
+{% block content %}
+<h2>{{ spell.name }}</h2>
+<p>
+    {% if spell.level == 0 %} {{ spell.school.capitalize() }} Cantrip 
+    {% else %} Level {{ spell.level }} {{ spell.school }} 
+    {% endif %}
+    
+</p>
+<p style="line-height: 1.2">
+    Casting time: {{ spell.cast_time }}  <br>
+    Duration: {{ spell.duration }}  <br>
+    Range/area: {{ spell.range_area }}  <br>
+    Components: {{ spell.components }}  <br>
+    Attack/save: {{ spell.attack_save }}  <br>
+    Damage/effect: {{ spell.damage_effect }}  <br>
+</p>
+
+{% for para in s_descr %}
+<p style="line-height: 1.5; font-size: medium;">
+    {{ para }}
+</p>
+{% endfor %}
+
+{% endblock %}
