@@ -74,7 +74,8 @@ def character_page(char_id):
                 characters.modifier(character.intelligence), "wisdom":
                 characters.modifier(character.wisdom), "charisma":
                 characters.modifier(character.charisma)}
-    return render_template("character.html", character=character, modifier=modifier)
+    spell_list = characters.spell_list(char_id)
+    return render_template("character.html", character=character, modifier=modifier, spell_list=spell_list)
 
 
 @app.route("/character/<int:char_id>/edit", methods=["GET", "POST"])

@@ -14,8 +14,8 @@
     Charisma: {{ character.charisma }} ( {{ modifier.charisma }} ) <br>
 </p>
 
+<h3>Skills</h3>
 <p style="line-height: 1.2; font-size: medium;">
-    Skills:<br>
     Acrobatics <min>(Dex)</min> {{ character.acrobatics }} <br>
     Animal Handling <min>(Wis)</min> {{ character.animal_handling }} <br>
     Arcana <min>(Int)</min> {{ character.arcana }} <br>
@@ -34,6 +34,20 @@
     Sleight of Hand <min>(Dex)</min> {{ character.sleight_of_hand }} <br>
     Stealth <min>(Dex)</min> {{ character.stealth }} <br>
     Survival <min>(Wis)</min> {{ character.survival }} <br>
+</p>
+
+<h3>Spells</h3>
+<p>
+    {% for spell in spell_list %}
+    <b><a href="/spell/{{ spell.spell_id }}">{{ spell.name }}</a></b>
+    {% if spell.level == 0 %} Cantrip 
+    {% else %} Level {{ spell.level }} {% endif %}
+    {% if spell.prepared %} <min>prepared</min> {% endif %}
+    <br>
+    {% endfor %}
+    {% if session.user_id == character.user_id %}
+    <a href="{{ character.id }}/spells">See details</a> <a href="{{ character.id }}/spells/edit">Edit spells</a>
+    {% endif %}
 </p>
 
 {% if session.user_id == character.user_id %}

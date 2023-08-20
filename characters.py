@@ -43,7 +43,8 @@ def get_characters():
     C.strength, C.dexterity, C.constitution, C.intelligence, C.wisdom, C.charisma, U.username 
           FROM characters C JOIN users U 
           ON C.user_id=U.id 
-          WHERE C.user_id=:user_id"""
+          WHERE C.user_id=:user_id
+          ORDER BY char_id DESC"""
     # is it necessary to get all these variables?
     result = db.session.execute(text(sql), {"user_id": user_id})
     return result.fetchall()
@@ -54,6 +55,11 @@ def character_sheet(char_id):
     result = db.session.execute(text(sql), {"id": char_id})
     return result.fetchone()
 
+def spell_list(char_id):
+    sql = """SELECT * FROM spellbook SB LEFT JOIN spells S ON S.id = SB.spell_id WHERE
+    SB.char_id=:char_id ORDER BY prepared, level"""
+    result = db.session.execute(text(sql), {"char_id": char_id})
+    return result.fetchall()
 
 def sign(number):
     if int(number) >= 0:

@@ -2,7 +2,6 @@ from sqlalchemy.sql import text
 from db import db
 import users
 
-
 def spellsheet(spell_id):
     sql = "SELECT * FROM spells S WHERE S.id=:id"
     result = db.session.execute(text(sql), {"id": spell_id})
@@ -25,3 +24,8 @@ def add_spell(name, level, cast_time, duration, range_area, components, school, 
                                    description})
     db.session.commit()
     return True
+
+def spell_list():
+    sql = "SELECT * FROM spells"
+    result = db.session.execute(text(sql),)
+    return result.fetchall()
