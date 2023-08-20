@@ -137,3 +137,20 @@ def spell_page(spell_id):
     s_descr = spell.description
     s_descr = s_descr.split('\n')
     return render_template("spell.html", spell=spell, s_descr=s_descr)
+
+@app.route("/character/<int:char_id>/spells", methods=["GET"])
+def char_spells(char_id):
+    allow = False
+    character = characters.character_sheet(char_id)
+    if users.user_id() == character.user_id:
+        allow = True
+    if not allow:
+        return render_template("error.html", message="Not permitted")
+    spell_list = characters.spell_list(char_id)
+
+    return render_template("character_spells.html", character=character, spell_list=spell_list)
+
+@app.route("/<int:char_id>/spells/edit", methods=["GET", "POST"])
+def edit_char_spells(char_id):
+    # page to add and edit characters spells
+    return

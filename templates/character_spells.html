@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}Spells - {{ character.character_name }} {% endblock %}
+{% block content %}
+<h2>{{ character.character_name }}'s spell list</h2>
+
+<p>
+    {% for spell in spell_list %}
+    <h3>{{ spell.name }}</h3>
+    <p>
+        {% if spell.level == 0 %} {{ spell.school.capitalize() }} Cantrip 
+        {% else %} Level {{ spell.level }} {{ spell.school }} 
+        {% endif %}
+        
+    </p>
+    <p style="line-height: 1.2">
+        Casting time: {{ spell.cast_time }}  <br>
+        Duration: {{ spell.duration }}  <br>
+        Range/area: {{ spell.range_area }}  <br>
+        Components: {{ spell.components }}  <br>
+        Attack/save: {{ spell.attack_save }}  <br>
+        Damage/effect: {{ spell.damage_effect }}  <br>
+    </p>
+
+    {% for para in spell.description.split('\n') %}
+    <p style="line-height: 1.5; font-size: medium;">
+        {{ para }}
+    </p>
+    {% endfor %}
+    <hr>
+    {% endfor %}
+    {% if session.user_id == character.user_id %}
+    <a href="/character/{{ character.id }}"><img src="{{ url_for('static', filename='left_arrow.gif') }}"> Back to character sheet</a>
+    <a href="{{ character.id }}/spells/edit">Edit spells</a>
+    {% endif %}
+</p>
+
+{% if session.user_id == character.user_id %}
+<p>
+    <a href="{{ character.id }}/edit">Edit character</a>
+</p>
+{% endif %}
+{% endblock %}
