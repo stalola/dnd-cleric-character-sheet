@@ -24,8 +24,8 @@ You can test the app at [divine-dicekeeper.fly.dev](https://divine-dicekeeper.fl
    spell save dc spell attack bonus  
    spell slots (total/expended) according to level  
    known spells  
-- [ ] user can add spells to the database
-	spell attributes: name, level, casting time, duration, range/area, components, school, attack/save, damage/effect and description
+- [x] spells can be added to the database
+	- spell attributes: name, level, casting time, duration, range/area, components, school, attack/save, damage/effect and description
 
 ## Further development:
 - [ ] user can join an adventuring party with other users
