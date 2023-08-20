@@ -46,4 +46,5 @@
     <input type="hidden" name="character_id" value="{{ character.id }}">
 </form>
 
+<a href="/character/{{ character.id }}"><img src="{{ url_for('static', filename='left_arrow.gif') }}"> Back to character sheet</a>
 {% endblock %}
