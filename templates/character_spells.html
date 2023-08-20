@@ -30,7 +30,6 @@
     {% endfor %}
     {% if session.user_id == character.user_id %}
     <a href="/character/{{ character.id }}"><img src="{{ url_for('static', filename='left_arrow.gif') }}"> Back to character sheet</a>
-    <a href="{{ character.id }}/spells/edit">Edit spells</a>
     {% endif %}
 </p>
 

@@ -147,10 +147,21 @@ def char_spells(char_id):
     if not allow:
         return render_template("error.html", message="Not permitted")
     spell_list = characters.spell_list(char_id)
-
     return render_template("character_spells.html", character=character, spell_list=spell_list)
 
 @app.route("/<int:char_id>/spells/edit", methods=["GET", "POST"])
 def edit_char_spells(char_id):
-    # page to add and edit characters spells
-    return
+    if request.method == "GET":
+        allow = False
+        character = characters.character_sheet(char_id)
+        if users.user_id() == character.user_id:
+            allow = True
+        if not allow:
+            return render_template("error.html", message="Not permitted")
+        char_spell_list = characters.spell_list(char_id)
+        db_spell_list = spells.spell_list()
+        return render_template("edit_character_spells.html", character=character,
+                               char_spell_list=char_spell_list, db_spell_list=db_spell_list)
+    if request.method == "POST":
+        #need to be thought trough again and finished later
+        return render_template("error.html", message="Updating failed")
