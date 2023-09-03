@@ -38,7 +38,7 @@ def register():
             return render_template("error.html", message="Passwords differ")
         if users.register(username, password1):
             return redirect("/")
-        return render_template("error.html", message="Registration failed")
+        return render_template("error.html", message="Registration failed. Make sure your username is unique and does not contain blank spaces.")
 
 
 @app.route("/new_character", methods=["GET", "POST"])
