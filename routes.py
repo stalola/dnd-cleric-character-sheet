@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, session, abort
 from app import app
 import users
 import characters
@@ -49,6 +49,8 @@ def new_character():
             return render_template("error.html", message="Not permitted")
         return render_template("new_character.html")
     if request.method == "POST":
+        if session["csrf_token"] != request.form["csrf_token"]:
+            abort(403)
         character_name = request.form["character_name"]
         speed = request.form["speed"]
         race = request.form["race"]
@@ -89,6 +91,8 @@ def character_edit(char_id):
             return render_template("error.html", message="Not permitted")
         return render_template("edit_character.html", character=character)
     if request.method == "POST":
+        if session["csrf_token"] != request.form["csrf_token"]:
+            abort(403)
         char_id = request.form["character_id"]
         speed = request.form["speed"]
         level = request.form["level"]
@@ -112,6 +116,8 @@ def new_spell():
             return render_template("error.html", message="Not permitted")
         return render_template("add_spell.html")
     if request.method == "POST":
+        if session["csrf_token"] != request.form["csrf_token"]:
+            abort(403)
         name = request.form["name"]
         level = request.form["level"]
         cast_time = request.form["cast_time"]
@@ -164,4 +170,6 @@ def edit_char_spells(char_id):
                                char_spell_list=char_spell_list, db_spell_list=db_spell_list)
     if request.method == "POST":
         #need to be thought trough again and finished later
+        if session["csrf_token"] != request.form["csrf_token"]:
+            abort(403)
         return render_template("error.html", message="Updating failed")
